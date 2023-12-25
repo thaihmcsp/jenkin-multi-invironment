@@ -2,7 +2,7 @@ def jenkinsENV = "${params.env}"
 def tempENV = "dev"
 echo "jenkinsENV: ${jenkinsENV}"
 
-if($jenkinsENV == "prod"){
+if(jenkinsENV == "prod"){
     tempENV = "master"
 }
 
