@@ -1,6 +1,6 @@
 FROM node:16
 
-ARG BUILD_ENV = ${BUILD_ENV}
+ARG BUILD_ENV=${BUILD_ENV}
 
 COPY package*.json ./
 
