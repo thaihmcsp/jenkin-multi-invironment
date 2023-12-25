@@ -17,7 +17,7 @@ services:
     ports:
       - "3307:3306"
     networks:
-      - app-network-multi
+      - app-network-multi-$env
 
   app-multi:
     image: thaihmcsp/nodejs-multi-env:{tag}
@@ -26,7 +26,7 @@ services:
       dockerfile: Dockerfile
     container_name: app-multi-$env
     depends_on:
-      - db-multi
+      - db-multi-$env
     ports:
       - "3001:3001"
     environment:
@@ -38,5 +38,5 @@ services:
       - app-network-multi-$env
 
 networks:
-  app-network-multi:
+  app-network-multi-$env:
     external: true
