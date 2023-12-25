@@ -1,11 +1,9 @@
-def jenkinsENV = "${params.env}"
-def appPort = 4000
-def dbPort = 5000
+def tempENV = "${params.env}"
+def jenkinsENV = "dev"
 
-echo "jenkinsENV: ${jenkinsENV}"
-if(jenkinsENV == "prod"){
-  appPort = 4001
-  dbPort = 5001
+echo "jenkinsENV: ${tempENV}"
+if(tempENV){
+  jenkinsENV = "${tempENV}"
 }
 
 pipeline {
