@@ -29,7 +29,7 @@ pipeline {
          steps {
             echo "ENV : $ENV"
 
-            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$jenkinsENV APP_PORT=$appPort -f nodejs/Dockerfile"
+            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$jenkinsENV --build-arg APP_PORT=$appPort -f nodejs/Dockerfile"
 
 
             sh "cat docker.txt | docker login -u thaihmcsp --password-stdin"
