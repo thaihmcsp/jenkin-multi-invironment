@@ -10,7 +10,7 @@ pipeline {
         NODE = "Build-server-multi"
     }
 
-echo "ENV : ${ENV}"
+echo "ENV : $ENV"
 
    stages {
     stage('Build Image') {
