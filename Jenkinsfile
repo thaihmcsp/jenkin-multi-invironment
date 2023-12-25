@@ -1,4 +1,4 @@
-echo env
+echo $env
 
 pipeline {
    agent none
