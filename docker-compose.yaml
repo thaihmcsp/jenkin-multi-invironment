@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  db:
+  db-multi:
     image: mysql:latest
-    container_name: db
+    container_name: db-multi
     environment:
       MYSQL_ROOT_PASSWORD: training-2023
       MYSQL_DATABASE: users
@@ -17,7 +17,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - app-network
+      - app-network-multi
 
   app:
     image: thaihmcsp/nodejs-multi-env:{tag}
@@ -35,8 +35,8 @@ services:
       DB_PASSWORD: training_pw
       DB_DATABASE: users
     networks:
-      - app-network
+      - app-network-multi
 
 networks:
-  app-network:
+  app-network-multi:
     external: true
