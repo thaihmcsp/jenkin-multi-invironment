@@ -4,9 +4,9 @@ pipeline {
    agent none
    environment {
         ENV = "dev"
-        // if(jenkinsENV = "prod"){
-        //     ENV = "master"
-        // }
+        if($jenkinsENV = "prod"){
+            ENV = "master"
+        }
         NODE = "Build-server-multi"
     }
 
