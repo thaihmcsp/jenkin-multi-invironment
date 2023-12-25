@@ -10,8 +10,6 @@ pipeline {
         NODE = "Build-server-multi"
     }
 
-echo "ENV : $ENV"
-
    stages {
     stage('Build Image') {
         agent {
@@ -24,6 +22,8 @@ echo "ENV : $ENV"
             TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
         }
          steps {
+            echo "ENV : $ENV"
+
             sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$ENV -f nodejs/Dockerfile"
 
 
