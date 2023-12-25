@@ -24,7 +24,7 @@ services:
     build:
       context: nodejs/.
       dockerfile: Dockerfile
-    container_name: app
+    container_name: app-multi
     depends_on:
       - db-multi
     ports:
