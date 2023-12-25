@@ -57,7 +57,9 @@ pipeline {
         }
 	steps {
             sh "sed -i 's/{tag}/$TAG/g' /home/jenkin-multi/targer-server-$ENV/docker-compose.yaml"
-            sh "export env=$jenkinsENV appPort=$appPort dbPort=$dbPort"
+            sh "export env=$jenkinsENV"
+            sh "export appPort=$appPort"
+            sh "export dbPort=$dbPort"
             sh "docker compose up -d"
         }      
        }
