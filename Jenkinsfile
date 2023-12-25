@@ -55,6 +55,7 @@ pipeline {
         }
 	steps {
             sh "sed -i 's/{tag}/$TAG/g' /home/jenkin-multi/targer-server-$ENV/docker-compose.yaml"
+            sh "export env=$jenkinsENV"
             sh "docker compose up -d"
         }      
        }

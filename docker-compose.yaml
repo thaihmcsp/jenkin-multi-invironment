@@ -3,7 +3,7 @@ version: "3"
 services:
   db-multi:
     image: mysql:latest
-    container_name: db-multi
+    container_name: db-multi-$env
     environment:
       MYSQL_ROOT_PASSWORD: training-2023
       MYSQL_DATABASE: users
@@ -24,7 +24,7 @@ services:
     build:
       context: nodejs/.
       dockerfile: Dockerfile
-    container_name: app-multi
+    container_name: app-multi-$env
     depends_on:
       - db-multi
     ports:
@@ -35,7 +35,7 @@ services:
       DB_PASSWORD: training_pw
       DB_DATABASE: users
     networks:
-      - app-network-multi
+      - app-network-multi-$env
 
 networks:
   app-network-multi:
