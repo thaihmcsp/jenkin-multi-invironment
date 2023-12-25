@@ -19,14 +19,14 @@ services:
     networks:
       - app-network-multi
 
-  app:
+  app-multi:
     image: thaihmcsp/nodejs-multi-env:{tag}
     build:
       context: nodejs/.
       dockerfile: Dockerfile
     container_name: app
     depends_on:
-      - db
+      - db-multi
     ports:
       - "3000:3000"
     environment:
