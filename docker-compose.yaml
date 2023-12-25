@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   db:
@@ -10,9 +10,9 @@ services:
       MYSQL_USER: training
       MYSQL_PASSWORD: training_pw
     logging:
-            driver: "json-file"
-            options:
-                max-size: "50m"
+      driver: "json-file"
+      options:
+        max-size: "50m"
     restart: unless-stopped
     ports:
       - "3306:3306"
@@ -20,7 +20,7 @@ services:
       - app-network
 
   app:
-    image: [dockerhub-repo]:{tag}
+    image: thaihmcsp/nodejs-multi-env:{tag}
     build:
       context: nodejs/.
       dockerfile: Dockerfile
