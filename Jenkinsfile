@@ -1,3 +1,5 @@
+echo env
+
 pipeline {
    agent none
    environment {
