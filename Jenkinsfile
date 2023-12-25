@@ -1,5 +1,12 @@
 def jenkinsENV = "${params.env}"
+def appPort = 4000
+def dbPort = 5000
+
 echo "jenkinsENV: ${jenkinsENV}"
+if(jenkinsENV == "prod"){
+  appPort = 4001
+  dbPort = 5001
+}
 
 pipeline {
    agent none
@@ -22,7 +29,7 @@ pipeline {
          steps {
             echo "ENV : $ENV"
 
-            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$jenkinsENV -f nodejs/Dockerfile"
+            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$jenkinsENV APP_PORT=$appPort -f nodejs/Dockerfile"
 
 
             sh "cat docker.txt | docker login -u thaihmcsp --password-stdin"
@@ -50,7 +57,7 @@ pipeline {
         }
 	steps {
             sh "sed -i 's/{tag}/$TAG/g' /home/jenkin-multi/targer-server-$ENV/docker-compose.yaml"
-            sh "export env=$jenkinsENV"
+            sh "export env=$jenkinsENV appPort=$appPort dbPort=$dbPort"
             sh "docker compose up -d"
         }      
        }

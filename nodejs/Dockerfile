@@ -1,6 +1,7 @@
 FROM node:16
 
 ARG BUILD_ENV=${BUILD_ENV}
+ARG APP_PORT=${APP_PORT}
 
 COPY package*.json ./
 
@@ -10,6 +11,6 @@ COPY . .
 
 COPY .env.${BUILD_ENV:-dev} ./.env
 
-EXPOSE 3001
+EXPOSE ${APP_PORT:4000}
 
 CMD [ "npm", "start" ]
