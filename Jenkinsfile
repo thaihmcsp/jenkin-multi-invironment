@@ -1,15 +1,10 @@
 def jenkinsENV = "${params.env}"
-def tempENV = "dev"
 echo "jenkinsENV: ${jenkinsENV}"
-
-if(jenkinsENV == "prod"){
-    tempENV = "master"
-}
 
 pipeline {
    agent none
    environment {
-        ENV = "${tempENV}"
+        ENV = "${jenkinsENV}"
         NODE = "Build-server-multi"
     }
 
