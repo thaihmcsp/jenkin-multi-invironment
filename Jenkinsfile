@@ -1,11 +1,16 @@
-echo "${params.env}"
-
+def jenkinsENV = "${params.env}"
+echo "jenkinsENV: ${jenkinsENV}"
 pipeline {
    agent none
    environment {
-        ENV = "master"
+        ENV = "dev"
+        if(jenkinsENV = "prod"){
+            ENV = "master"
+        }
         NODE = "Build-server-multi"
     }
+
+echo "ENV : ${ENV}"
 
    stages {
     stage('Build Image') {
