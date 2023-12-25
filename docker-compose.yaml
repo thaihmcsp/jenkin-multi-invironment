@@ -15,7 +15,7 @@ services:
         max-size: "50m"
     restart: unless-stopped
     ports:
-      - $dbPort":3306"
+      - "3306:3306"
     networks:
       - app-network-multi
 
@@ -28,7 +28,7 @@ services:
     depends_on:
       - db-multi
     ports:
-      - "${appPort}:${appPort}"
+      - "3000:3000"
     environment:
       DB_HOST: db
       DB_USER: training

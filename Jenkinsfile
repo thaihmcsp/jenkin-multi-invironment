@@ -29,7 +29,7 @@ pipeline {
          steps {
             echo "ENV : $ENV"
 
-            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$jenkinsENV --build-arg APP_PORT=$appPort -f nodejs/Dockerfile"
+            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$jenkinsENV -f nodejs/Dockerfile"
 
 
             sh "cat docker.txt | docker login -u thaihmcsp --password-stdin"
@@ -58,8 +58,6 @@ pipeline {
 	steps {
             sh "sed -i 's/{tag}/$TAG/g' /home/jenkin-multi/targer-server-$ENV/docker-compose.yaml"
             sh "export env=$jenkinsENV"
-            sh "export appPort=$appPort"
-            sh "export dbPort=$dbPort"
             sh "docker compose up -d"
         }      
        }
