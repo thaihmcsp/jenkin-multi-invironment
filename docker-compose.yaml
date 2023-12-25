@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: training-2023
+      MYSQL_DATABASE: users
+      MYSQL_USER: training
+      MYSQL_PASSWORD: training_pw
+    logging:
+            driver: "json-file"
+            options:
+                max-size: "50m"
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+  app:
+    image: [dockerhub-repo]:{tag}
+    build:
+      context: nodejs/.
+      dockerfile: Dockerfile
+    container_name: app
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: training
+      DB_PASSWORD: training_pw
+      DB_DATABASE: users
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true

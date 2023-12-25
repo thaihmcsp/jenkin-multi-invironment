@@ -1,0 +1,19 @@
+{
+    "name": "node-mysql-api",
+    "version": "1.0.0",
+    "description": "A simple Node.js API using MySQL and Swagger documentation",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": "Manh Hoang",
+    "license": "MIT",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "dotenv": "^16.3.1",
+        "express": "^4.17.1",
+        "mysql2": "^2.3.0",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^4.1.6"
+    }
+}
