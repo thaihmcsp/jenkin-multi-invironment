@@ -11,6 +11,6 @@ COPY . .
 
 COPY .env.${BUILD_ENV:-dev} ./.env
 
-EXPOSE ${APP_PORT:4000}
+EXPOSE APP_PORT
 
 CMD [ "npm", "start" ]
