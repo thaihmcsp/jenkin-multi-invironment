@@ -27,7 +27,7 @@ pipeline {
          steps {
             echo "ENV : $ENV"
 
-            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$ENV -f nodejs/Dockerfile"
+            sh "docker build nodejs/. -t multi-env-nodejs-$ENV:latest --build-arg BUILD_ENV=$jenkinsENV -f nodejs/Dockerfile"
 
 
             sh "cat docker.txt | docker login -u thaihmcsp --password-stdin"
