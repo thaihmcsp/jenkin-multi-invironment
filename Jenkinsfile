@@ -1,4 +1,4 @@
-echo $env
+echo "${params.env}"
 
 pipeline {
    agent none
