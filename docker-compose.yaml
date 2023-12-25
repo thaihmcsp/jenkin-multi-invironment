@@ -17,7 +17,7 @@ services:
     ports:
       - "3307:3306"
     networks:
-      - app-network-multi-$env
+      - app-network-multi
 
   app-multi:
     image: thaihmcsp/nodejs-multi-env:{tag}
@@ -35,9 +35,8 @@ services:
       DB_PASSWORD: training_pw
       DB_DATABASE: users
     networks:
-      - app-network-multi-$env
+      - app-network-multi
 
 networks:
-  outside:
-    external:
-      name: app-network-multi-$env
+  app-network-multi:
+    external: true
