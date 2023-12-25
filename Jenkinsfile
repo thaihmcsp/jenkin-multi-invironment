@@ -2,14 +2,14 @@ pipeline {
    agent none
    environment {
         ENV = "dev"
-        NODE = "Build-server"
+        NODE = "Build-server-multi"
     }
 
    stages {
     stage('Build Image') {
         agent {
             node {
-                label "Build-server"
+                label "Build-server-multi"
                 customWorkspace "/home/ubuntu/jenkins/multi-branch/devops-training-$ENV/"
                 }
             }
