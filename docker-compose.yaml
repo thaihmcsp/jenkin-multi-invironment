@@ -38,5 +38,6 @@ services:
       - app-network-multi-$env
 
 networks:
-  app-network-multi-$env:
-    external: true
+  outside:
+    external:
+      name: app-network-multi-$env
