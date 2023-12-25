@@ -26,7 +26,7 @@ services:
       dockerfile: Dockerfile
     container_name: app-multi-$env
     depends_on:
-      - db-multi-$env
+      - db-multi
     ports:
       - "3001:3001"
     environment:
