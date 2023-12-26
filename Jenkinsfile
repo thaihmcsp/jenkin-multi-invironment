@@ -4,6 +4,7 @@ def jenkinsENV = "dev"
 echo "jenkinsENV: ${tempENV}"
 if(tempENV){
   jenkinsENV = "${tempENV}"
+  
 }
 
 pipeline {
